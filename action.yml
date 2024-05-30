@@ -36,7 +36,7 @@ runs:
         
         export RAILWAY_TOKEN=${{ inputs.railway_token }}
         
-        if [ -z ${INPUT_PATH} ]; then
+        if [ -n ${INPUT_PATH} ]; then
           cd ${INPUT_PATH}
         fi
         
