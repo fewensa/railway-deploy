@@ -33,6 +33,8 @@ runs:
         INPUT_SERVICE=${{ inputs.railway_token }}
         INPUT_DETACH=${{ inputs.detach }}
         
+        export RAILWAY_TOKEN=${{ inputs.railway_token }}
+        
         if [ -z ${INPUT_DETACH} ]; then
           cd ${INPUT_DETACH}
         fi
