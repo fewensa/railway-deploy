@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.3
+
+* Use composite action
+* Add path argument to set run dir
+
 ## 0.1.2
 
 * Update the Dockerfile to install @railway/cli with their bash install script.
