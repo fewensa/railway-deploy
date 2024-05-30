@@ -32,11 +32,12 @@ runs:
         ERROR_CODE=0
         INPUT_SERVICE=${{ inputs.service }}
         INPUT_DETACH=${{ inputs.detach }}
+        INPUT_PATH=${{ inputs.path }}
         
         export RAILWAY_TOKEN=${{ inputs.railway_token }}
         
-        if [ -z ${INPUT_DETACH} ]; then
-          cd ${INPUT_DETACH}
+        if [ -z ${INPUT_PATH} ]; then
+          cd ${INPUT_PATH}
         fi
         
         RAILWAY_CMD="railway up --service=${INPUT_SERVICE} ${INPUT_DETACH:+--detach}"
