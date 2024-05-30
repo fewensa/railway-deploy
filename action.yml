@@ -42,8 +42,8 @@ runs:
         RAILWAY_CMD="railway up --service=${INPUT_SERVICE} ${INPUT_DETACH:+--detach}"
         eval $RAILWAY_CMD || ERROR_CODE=$?
         
-        if [ "${error_code}" -ne 0 ]; then
-          exit $error_code
+        if [ "${ERROR_CODE}" -ne 0 ]; then
+          exit $ERROR_CODE
         else
           echo "status=Success" >> $GITHUB_OUTPUT
         fi
