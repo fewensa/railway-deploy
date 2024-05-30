@@ -30,7 +30,7 @@ runs:
       shell: bash
       run: |
         ERROR_CODE=0
-        INPUT_SERVICE=${{ inputs.railway_token }}
+        INPUT_SERVICE=${{ inputs.service }}
         INPUT_DETACH=${{ inputs.detach }}
         
         export RAILWAY_TOKEN=${{ inputs.railway_token }}
