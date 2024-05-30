@@ -4,11 +4,12 @@ This action deploys your app to Railway using Railway CLI.
 
 ## Inputs
 
-| Name            | Required | Description                                                                                      |
+|      Name       | Required |                                           Description                                            |
 |:---------------:|:--------:|:------------------------------------------------------------------------------------------------:|
-| `service`       | `true`   | Specify the service to use. Introduced from `0.1.0`.                                             |
-| `railway_token` | `false`  | Railway Token to deploy the app.                                                                 |
-| `detach`        | `false`  | Allow detaching (not waiting) the deployment process from the pipeline. Introduced from `0.1.2`. |
+|    `service`    |  `true`  |                       Specify the service to use. Introduced from `0.1.0`.                       |
+| `railway_token` | `false`  |                                 Railway Token to deploy the app.                                 |
+|    `detach`     | `false`  | Allow detaching (not waiting) the deployment process from the pipeline. Introduced from `0.1.2`. |
+|    `path`       | `false`  |                                  Custom path for your project                                    |
 
 ## Outputs
 
@@ -45,6 +46,16 @@ with:
   railway_token: ${{ secrets.RAILWAY_TOKEN }}
   service: "my-service"
   detach: true
+```
+
+### Custom path
+
+```yaml
+uses: bervProject/railway-deploy@main
+with:
+  railway_token: ${{ secrets.RAILWAY_TOKEN }}
+  service: "my-service"
+  path: "subproject"
 ```
 
 ## Notes for Raising Bugs/Issues

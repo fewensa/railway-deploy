@@ -10,13 +10,36 @@ inputs:
   detach: # detatch option
     description: 'Detach option in the railway cli option'
     required: false
+  path:
+    description: 'Project path'
+    required: false
 outputs:
   status: # status output
     description: ''
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.service }}
-    - ${{ inputs.railway_token }}
-    - ${{ inputs.detach }}
+  using: "composite"
+  steps:
+    - name: Setup NodeJS
+      uses: actions/setup-node@v4
+
+    - name: Install railway
+      run: npm i -g @railway/cli
+
+    - name: Deploy project
+      run: |
+        ERROR_CODE=0
+        INPUT_SERVICE=${{ inputs.railway_token }}
+        INPUT_DETACH=${{ inputs.detach }}
+        
+        if [ -z ${INPUT_DETACH} ]; then
+          cd ${INPUT_DETACH}
+        fi
+        
+        RAILWAY_CMD="railway up --service=${INPUT_SERVICE} ${INPUT_DETACH:+--detach}"
+        eval $RAILWAY_CMD || ERROR_CODE=$?
+        
+        if [ "${error_code}" -ne 0 ]; then
+          exit $error_code
+        else
+          echo "status=Success" >> $GITHUB_OUTPUT
+        fi
